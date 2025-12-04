@@ -1,22 +1,33 @@
-import React from "react";
-import { useTheme } from "../contexts/ThemeContext";
+import React, { useState, useEffect } from "react";
+import { Moon, Sun } from "lucide-react";
 
 const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
-  
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("darkMode");
+      if (saved !== null) return saved === "true";
+      return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    }
+    return false;
+  });
+
+useEffect(() => {
+  const html = document.documentElement;
+  if (isDark) html.classList.add("dark");
+  else html.classList.remove("dark");
+  localStorage.setItem("darkMode", isDark.toString());
+}, [isDark]);
+
+  const toggleDarkMode = () => setIsDark(!isDark);
+
   return (
     <button
-      onClick={toggleTheme}
-      className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500"
-      aria-label={`${theme === 'light' ? 'Dark' : 'Light'} modega o'tish`}
+      onClick={toggleDarkMode}
+      className="fixed top-24 right-4 sm:right-6 md:right-8 z-50 p-2.5 sm:p-3 rounded-full shadow-lg transition-all duration-300
+                 bg-white dark:bg-gray-800 text-gray-800 dark:text-yellow-300 hover:scale-110 active:scale-95"
+      aria-label="Toggle dark mode"
     >
-      <div className="w-6 h-6 flex items-center justify-center">
-        {theme === 'light' ? (
-          <span className="text-gray-800 text-xl transition-transform duration-300">🌙</span>
-        ) : (
-          <span className="text-yellow-300 text-xl transition-transform duration-300">☀️</span>
-        )}
-      </div>
+      {isDark ? <Sun size={20} className="sm:w-5 sm:h-5" /> : <Moon size={20} className="sm:w-5 sm:h-5" />}
     </button>
   );
 };
