@@ -12,6 +12,7 @@ import MyImage from "../assets/USER.jpg";
 import ThemeToggle from "../components/ThemeToggle";
 import TelegramIcon from "../components/TelegramIcon";
 import { socialMedias } from "../data/socialMedias";
+import CVdownload from "../components/CVdownload";
 /*************  ✨ Windsurf Command ⭐  *************/
 /**
  * Home page component
@@ -64,43 +65,59 @@ function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 mb-4">
-          <button
-            className="flex items-center justify-center gap-2 px-4 sm:px-5 md:px-6 lg:px-7 py-2 sm:py-2.5 md:py-3
-        bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl
-        shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-95 transition-all duration-300 text-sm sm:text-base"
-          >
-            <Download size={18} className="sm:w-5 sm:h-5" />
-            <span>Download CV</span>
-          </button>
+          <CVdownload />
 
           <div className="flex justify-center sm:justify-start gap-3 sm:gap-4 pt-2 sm:pt-0">
             <a
               href={socialMedias.git_hub.path}
               target="_blank"
-              className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:shadow-lg hover:-translate-y-0.5 transition-all"
+              className="p-2 sm:p-3 rounded-full shadow-md bg-gray-200 dark:bg-gray-700
+               flex items-center justify-center
+               transition-all duration-300
+               hover:shadow-xl hover:-translate-y-1 hover:bg-gradient-to-br hover:from-gray-300 hover:to-gray-400
+               active:scale-95"
             >
-              <Github className="text-gray-800 dark:text-gray-200 w-4 h-4 sm:w-5 sm:h-5" />
+              <Github className="text-gray-900 dark:text-gray-200 w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 hover:text-black dark:hover:text-white" />
             </a>
+
             <a
-              target="_blank"
               href={socialMedias.linkedin.path}
-              className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:shadow-lg hover:-translate-y-0.5 transition-all"
-            >
-              <Linkedin className="text-blue-700 dark:text-blue-400 w-4 h-4 sm:w-5 sm:h-5" />
-            </a>
-            <a
               target="_blank"
+              className="p-2 sm:p-3 rounded-full shadow-md bg-gray-200 dark:bg-gray-700
+               flex items-center justify-center
+               transition-all duration-500
+               hover:shadow-xl hover:-translate-y-1 hover:bg-gradient-to-br hover:from-blue-400 hover:to-blue-600
+               active:scale-95"
+            >
+              <Linkedin className="text-blue-800 dark:text-blue-400 w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-500 hover:text-white" />
+            </a>
+
+            <a
               href={socialMedias.youtube.path}
-              className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:shadow-lg hover:-translate-y-0.5 transition-all"
-            >
-              <Youtube className="text-red-600 dark:text-red-400 w-4 h-4 sm:w-5 sm:h-5" />
-            </a>
-            <a
               target="_blank"
-              href={socialMedias.telegram.path}
-              className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:shadow-lg hover:-translate-y-0.5 transition-all"
+              className="p-2 sm:p-3 rounded-full shadow-md bg-gray-200 dark:bg-gray-700
+               flex items-center justify-center
+               transition-all duration-500
+               hover:shadow-xl hover:-translate-y-1 hover:bg-gradient-to-br hover:from-red-400 hover:to-red-600
+               active:scale-95"
             >
-              <TelegramIcon size={20} color="#0088cc" />
+              <Youtube className="text-red-900 dark:text-red-400 w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 hover:text-white" />
+            </a>
+
+            <a
+              href={socialMedias.telegram.path}
+              target="_blank"
+              className="p-2 sm:p-3 rounded-full shadow-md bg-gray-200 dark:bg-gray-700
+               flex items-center justify-center
+               transition-all duration-500
+               hover:shadow-xl hover:-translate-y-1 hover:bg-gradient-to-br hover:from-cyan-400 hover:to-blue-500
+               active:scale-95"
+            >
+              <TelegramIcon
+                size={20}
+                color="#207dabff"
+                className="transition-transform duration-300 hover:scale-110"
+              />
             </a>
           </div>
         </div>
