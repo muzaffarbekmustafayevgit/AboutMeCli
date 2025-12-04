@@ -30,63 +30,76 @@ const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
- return (
-<nav className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 ${ // **absolute -> fixed** navbar yuqorida qotib turishi uchun
-scrolled 
- ? 'bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg shadow-xl py-2' 
- : 'bg-white/0 dark:bg-gray-900/0 py-4' // Scroll bo'lmaganda rangni shaffofroq qildim
-}`}>
-<div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-{/* Logo (chap tomonda) */}
-<Link to="/" className="flex items-center space-x-3 group">
-<div className="relative">
- <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 shadow-2xl animate-pulse"> {/* w-12/h-12 -> w-10/h-10, mb-2 olib tashlandi */}
- <span className="text-white text-xl font-bold">M</span>
- </div>
-</div>
- <div className="flex flex-col">
- <span className="text-xl font-bold bg-gradient-to-r from-gray-800 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent"> {/* text-2xl -> text-xl */}
- Muzaffarbek
- </span>
- <span className="text-xs text-gray-500 dark:text-gray-400 font-medium tracking-wider">
- MERN STACK DEVELOPER
- </span>
- </div> </Link>
+return (
+  <nav
+    className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 
+      ${
+        scrolled
+          ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-md py-2 border-b border-gray-200/40 dark:border-gray-700/40"
+          : "bg-transparent py-4"
+      }
+    `}
+  >
+    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
- {/* DesktopMenu (markazda) */}
- <DesktopMenu isActive={isActive} activeIndex={activeIndex} />
+      {/* Logo */}
+      <Link to="/" className="flex items-center space-x-3 group">
+        <div className="relative">
+          <div className="inline-flex items-center justify-center 
+            w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 
+            shadow-lg group-hover:scale-105 transition-transform animate-pulse
+          ">
+            <span className="text-white text-xl font-bold">M</span>
+          </div>
+        </div>
 
- {/* ThemeToggle va Button (o'ng tomonda) */}
- <div className="flex items-center space-x-4">
- <ThemeToggle />
- <Button 
- variant="primary" 
- size="sm"
- className="hidden md:flex"
- as={Link}
- to="/contact"
- >
- Bog'lanish
- </Button>
-<MobileMenuButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-</div>
- </div>
+        <div className="flex flex-col leading-tight">
+          <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white 
+            dark:to-gray-300 bg-clip-text text-transparent"
+          >
+            Muzaffarbek
+          </span>
+          <span className="text-xs text-gray-500 dark:text-gray-400 tracking-wider">
+            MERN STACK DEVELOPER
+          </span>
+        </div>
+      </Link>
 
-{/* Mobil menyu */}
-<MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} isActive={isActive} />
-      
-      {/* Scroll pastda qolishi uchun stil qo'shamiz */}
-      <style jsx>{`
-        @keyframes slideDown {
-          from { transform: translateY(-100%); opacity: 0; }
-          to { transform: translateY(0); opacity: 1; }
-        }
-        .animate-slideDown {
-          animation: slideDown 0.3s ease-out forwards;
-        }
-      `}</style>
-</nav>
+      {/* Desktop Menu */}
+      <DesktopMenu isActive={isActive} activeIndex={activeIndex} />
+
+      {/* Right Side */}
+      <div className="flex items-center space-x-4">
+        <ThemeToggle />
+        <Button
+          variant="primary"
+          size="sm"
+          className="hidden md:flex"
+          as={Link}
+          to="/contact"
+        >
+          Bog'lanish
+        </Button>
+
+        <MobileMenuButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      </div>
+    </div>
+
+    {/* Mobile menu */}
+    <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} isActive={isActive} />
+
+    <style jsx>{`
+      @keyframes slideDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+      .animate-slideDown {
+        animation: slideDown 0.35s ease-out forwards;
+      }
+    `}</style>
+  </nav>
 );
+
 };
 
 // Desktop menu komponenti
