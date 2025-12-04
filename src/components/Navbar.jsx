@@ -1,7 +1,6 @@
-// src/components/Navbar.jsx - Yangilangan versiya
+// src/components/Navbar.jsx
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { useTheme } from "../contexts/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
 import { menuItems } from "../data/menuItems";
 import Button from "./Button";
@@ -11,106 +10,90 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
   const location = useLocation();
-  const { theme } = useTheme();
 
+  // Scroll effect
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Set active menu item
   useEffect(() => {
     const currentIndex = menuItems.findIndex(item => location.pathname === item.path);
-    if (currentIndex !== -1) {
-      setActiveIndex(currentIndex);
-    }
+    if (currentIndex !== -1) setActiveIndex(currentIndex);
   }, [location.pathname]);
 
   const isActive = (path) => location.pathname === path;
 
-return (
-  <nav
-    className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 
-      ${
-        scrolled
+  return (
+    <nav
+      className={`fixed w-full top-0 left-0 z-50 transition-all duration-500 
+        ${scrolled
           ? "bg-white/90 dark:bg-gray-900/90 backdrop-blur-xl shadow-md py-2 border-b border-gray-200/40 dark:border-gray-700/40"
           : "bg-transparent py-4"
-      }
-    `}
-  >
-    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
-      {/* Logo */}
-      <Link to="/" className="flex items-center space-x-3 group">
-        <div className="relative">
-          <div className="inline-flex items-center justify-center 
-            w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 
-            shadow-lg group-hover:scale-105 transition-transform animate-pulse
-          ">
-            <span className="text-white text-xl font-bold">M</span>
+        {/* Logo */}
+        <Link to="/" className="flex items-center space-x-3 group">
+          <div className="relative">
+            <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 shadow-lg group-hover:scale-105 transition-transform animate-pulse">
+              <span className="text-white text-xl font-bold">M</span>
+            </div>
           </div>
-        </div>
+          <div className="flex flex-col leading-tight">
+            <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white dark:to-gray-300 bg-clip-text text-transparent">
+              Muzaffarbek
+            </span>
+            <span className="text-xs text-gray-500 dark:text-gray-400 tracking-wider">
+              MERN STACK DEVELOPER
+            </span>
+          </div>
+        </Link>
 
-        <div className="flex flex-col leading-tight">
-          <span className="text-xl font-bold bg-gradient-to-r from-gray-900 to-gray-600 dark:from-white 
-            dark:to-gray-300 bg-clip-text text-transparent"
+        {/* Desktop Menu */}
+        <DesktopMenu isActive={isActive} activeIndex={activeIndex} />
+
+        {/* Right Side */}
+        <div className="flex items-center space-x-4">
+          <Button
+            variant="primary"
+            size="sm"
+            className="hidden md:flex"
+            as={Link}
+            to="/contact"
           >
-            Muzaffarbek
-          </span>
-          <span className="text-xs text-gray-500 dark:text-gray-400 tracking-wider">
-            MERN STACK DEVELOPER
-          </span>
+            Bog'lanish
+          </Button>
+
+          {/* Mobile menu toggle */}
+          <MobileMenuButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
         </div>
-      </Link>
-
-      {/* Desktop Menu */}
-      <DesktopMenu isActive={isActive} activeIndex={activeIndex} />
-
-      {/* Right Side */}
-      <div className="flex items-center space-x-4">
-      
-        <Button
-          variant="primary"
-          size="sm"
-          className="hidden md:flex"
-          as={Link}
-          to="/contact"
-        >
-          Bog'lanish
-        </Button>
-
-        <MobileMenuButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       </div>
-    </div>
 
-    {/* Mobile menu */}
-    <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} isActive={isActive} />
+      {/* Mobile menu */}
+      <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} isActive={isActive} />
 
-    <style jsx>{`
-      @keyframes slideDown {
-        from { transform: translateY(-100%); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-      .animate-slideDown {
-        animation: slideDown 0.35s ease-out forwards;
-      }
-    `}</style>
-  </nav>
-);
+      <ThemeToggle />
 
+      <style jsx>{`
+        @keyframes slideDown {
+          from { transform: translateY(-100%); opacity: 0; }
+          to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slideDown { animation: slideDown 0.35s ease-out forwards; }
+      `}</style>
+    </nav>
+  );
 };
 
-// Desktop menu komponenti
+// Desktop menu component
 const DesktopMenu = ({ isActive, activeIndex }) => (
   <div className="hidden lg:flex items-center space-x-1">
     {menuItems.map((item, index) => (
-      <Link
-        key={item.key}
-        to={item.path}
-        className="relative px-4 py-2 group"
-      >
+      <Link key={item.key} to={item.path} className="relative px-4 py-2 group">
         <span className={`relative z-10 transition-colors font-medium ${
           isActive(item.path)
             ? "text-blue-600 dark:text-blue-400"
@@ -118,16 +101,16 @@ const DesktopMenu = ({ isActive, activeIndex }) => (
         }`}>
           {item.label}
         </span>
-        
+
         {isActive(item.path) && (
           <>
             <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
             <div className="absolute -inset-2 bg-blue-500/5 dark:bg-blue-500/10 rounded-lg blur-xl"></div>
           </>
         )}
-        
+
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-purple-500/0 dark:from-blue-400/0 dark:via-blue-400/5 dark:to-purple-400/0 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
-        
+
         {/* Animated indicator */}
         {index === activeIndex && (
           <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
@@ -137,7 +120,7 @@ const DesktopMenu = ({ isActive, activeIndex }) => (
   </div>
 );
 
-// Mobile menu button
+// Mobile menu toggle button
 const MobileMenuButton = ({ menuOpen, setMenuOpen }) => (
   <button
     onClick={() => setMenuOpen(!menuOpen)}
@@ -158,7 +141,7 @@ const MobileMenuButton = ({ menuOpen, setMenuOpen }) => (
   </button>
 );
 
-// Mobile menu
+// Mobile menu component
 const MobileMenu = ({ menuOpen, setMenuOpen, isActive }) => {
   if (!menuOpen) return null;
 
@@ -189,7 +172,7 @@ const MobileMenu = ({ menuOpen, setMenuOpen, isActive }) => {
                   {item.key === 'skills' && '⚡'}
                   {item.key === 'resume' && '📄'}
                   {item.key === 'blog' && '📝'}
-                  {item.key === 'contact' && '📞'}
+                 
                 </span>
               </div>
               <span className={`text-lg font-medium ${
@@ -212,21 +195,6 @@ const MobileMenu = ({ menuOpen, setMenuOpen, isActive }) => {
             )}
           </Link>
         ))}
-        
-        <div className="pt-6 mt-6 border-t border-gray-200 dark:border-gray-700">
-          <Button
-            variant="primary"
-            fullWidth
-            size="lg"
-            as={Link}
-            to="/contact"
-            onClick={() => setMenuOpen(false)}
-            icon="📧"
-            iconPosition="left"
-          >
-            Bog'lanish
-          </Button>
-        </div>
       </div>
     </div>
   );

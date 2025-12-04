@@ -1,4 +1,5 @@
 import React from "react";
+import Loading from "../components/Loading";
 
 const Button = ({
   children,
@@ -55,28 +56,8 @@ const Button = ({
         </span>
       )}
 
-      {/* 🔥 Loading pastki chiziq */}
-      {loading && (
-        <span className="absolute left-0 bottom-0 w-full h-[2px] overflow-hidden">
-          <span className="block h-full w-full bg-current animate-line" />
-        </span>
-      )}
-
-      {/* CSS animations */}
-      <style jsx>{`
-        @keyframes line-move {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(100%);
-          }
-        }
-
-        .animate-line {
-          animation: line-move 1.2s linear infinite;
-        }
-      `}</style>
+      {/* Loading Indicator */}
+      {loading && <Loading />}
     </button>
   );
 };

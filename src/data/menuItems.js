@@ -4,6 +4,5 @@ export const menuItems = [
   { key: "portfolio", path: "/portfolio", label: "Loyihalar" },
   { key: "skills", path: "/skills", label: "Ko'nikmalar" },
   { key: "resume", path: "/resume", label: "CV / Resume" },
-  { key: "blog", path: "/blog", label: "Blog" },
-  { key: "contact", path: "/contact", label: "Bog'lanish" },
+  { key: "blog", path: "/blog", label: "Blog" }
 ];
