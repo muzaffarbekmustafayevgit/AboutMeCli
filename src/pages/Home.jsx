@@ -1,7 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Download, Github, Linkedin, Youtube, Moon, Sun } from "lucide-react";
+import {
+  Download,
+  Github,
+  Linkedin,
+  Youtube,
+  Moon,
+  Icon,
+  Sun,
+} from "lucide-react";
 import MyImage from "../assets/USER.jpg";
 import ThemeToggle from "../components/ThemeToggle";
+import TelegramIcon from "../components/TelegramIcon";
+import { socialMedias } from "../data/socialMedias";
 /*************  ✨ Windsurf Command ⭐  *************/
 /**
  * Home page component
@@ -65,48 +75,57 @@ function Home() {
 
           <div className="flex justify-center sm:justify-start gap-3 sm:gap-4 pt-2 sm:pt-0">
             <a
-              href="#"
+              href={socialMedias.git_hub.path}
+              target="_blank"
               className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:shadow-lg hover:-translate-y-0.5 transition-all"
             >
               <Github className="text-gray-800 dark:text-gray-200 w-4 h-4 sm:w-5 sm:h-5" />
             </a>
             <a
-              href="#"
+              target="_blank"
+              href={socialMedias.linkedin.path}
               className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:shadow-lg hover:-translate-y-0.5 transition-all"
             >
               <Linkedin className="text-blue-700 dark:text-blue-400 w-4 h-4 sm:w-5 sm:h-5" />
             </a>
             <a
-              href="#"
+              target="_blank"
+              href={socialMedias.youtube.path}
               className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:shadow-lg hover:-translate-y-0.5 transition-all"
             >
               <Youtube className="text-red-600 dark:text-red-400 w-4 h-4 sm:w-5 sm:h-5" />
+            </a>
+            <a
+              target="_blank"
+              href={socialMedias.telegram.path}
+              className="p-2 sm:p-3 bg-gray-200 dark:bg-gray-700 rounded-full shadow hover:shadow-lg hover:-translate-y-0.5 transition-all"
+            >
+              <TelegramIcon size={20} color="#0088cc" />
             </a>
           </div>
         </div>
       </div>
 
-    {/* Card 2: Profile Image */}
-<div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 hidden lg:block">
-  <div
-    className="absolute inset-0 rounded-full animate-spin-slow"
-    style={{
-      background: `conic-gradient(#4f46e5, #3b82f6, #8b5cf6, #4f46e5)`,
-      transform: `rotate(${rotation}deg)`,
-    }}
-  >
-    <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full shadow-inner"></div>
-  </div>
+      {/* Card 2: Profile Image */}
+      <div className="relative w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 xl:w-96 xl:h-96 hidden lg:block">
+        <div
+          className="absolute inset-0 rounded-full animate-spin-slow"
+          style={{
+            background: `conic-gradient(#4f46e5, #3b82f6, #8b5cf6, #4f46e5)`,
+            transform: `rotate(${rotation}deg)`,
+          }}
+        >
+          <div className="absolute inset-1 bg-white dark:bg-gray-900 rounded-full shadow-inner"></div>
+        </div>
 
-  <div className="absolute inset-3 sm:inset-4 md:inset-5 lg:inset-6 rounded-full overflow-hidden border border-white dark:border-gray-800 shadow-xl">
-    <img
-      src={MyImage}
-      alt="Muzaffarbek Mustafayev"
-      className="w-full h-full object-cover"
-    />
-  </div>
-</div>
-
+        <div className="absolute inset-3 sm:inset-4 md:inset-5 lg:inset-6 rounded-full overflow-hidden border border-white dark:border-gray-800 shadow-xl">
+          <img
+            src={MyImage}
+            alt="Muzaffarbek Mustafayev"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      </div>
 
       {/* Responsive adjustments */}
       <style>{`
