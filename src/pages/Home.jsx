@@ -9,8 +9,7 @@ import {
   Sun,
 } from "lucide-react";
 import MyImage from "../assets/USER.jpg";
-import ThemeToggle from "../components/ThemeToggle";
-import TelegramIcon from "../components/TelegramIcon";
+import TelegramIcon from "../components/Icons/TelegramIcon";
 import { socialMedias } from "../data/socialMedias";
 import CVdownload from "../components/CVdownload";
 /*************  ✨ Windsurf Command ⭐  *************/
@@ -39,7 +38,7 @@ function Home() {
                 bg-gray-50 dark:bg-gray-900 transition-colors duration-500"
     >
       {/* Theme Toggle */}
-      <ThemeToggle />
+ 
 
       {/* Card 1: Content */}
 
@@ -101,7 +100,7 @@ function Home() {
                hover:shadow-xl hover:-translate-y-1 hover:bg-gradient-to-br hover:from-red-400 hover:to-red-600
                active:scale-95"
             >
-              <Youtube className="text-red-900 dark:text-red-400 w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 hover:text-white" />
+              <Youtube className="text-red-700 dark:text-red-400 w-4 h-4 sm:w-5 sm:h-5 transition-colors duration-300 hover:text-white-900" />
             </a>
 
             <a

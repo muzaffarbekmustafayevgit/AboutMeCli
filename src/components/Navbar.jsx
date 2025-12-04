@@ -58,15 +58,8 @@ const Navbar = () => {
 
         {/* Right Side */}
         <div className="flex items-center space-x-4">
-          <Button
-            variant="primary"
-            size="sm"
-            className="hidden md:flex"
-            as={Link}
-            to="/contact"
-          >
-            Bog'lanish
-          </Button>
+          
+     <ThemeToggle />
 
           {/* Mobile menu toggle */}
           <MobileMenuButton menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
@@ -76,7 +69,7 @@ const Navbar = () => {
       {/* Mobile menu */}
       <MobileMenu menuOpen={menuOpen} setMenuOpen={setMenuOpen} isActive={isActive} />
 
-      <ThemeToggle />
+    
 
       <style jsx>{`
         @keyframes slideDown {
@@ -90,6 +83,7 @@ const Navbar = () => {
 };
 
 // Desktop menu component
+// Desktop menu component
 const DesktopMenu = ({ isActive, activeIndex }) => (
   <div className="hidden lg:flex items-center space-x-1">
     {menuItems.map((item, index) => (
@@ -102,19 +96,13 @@ const DesktopMenu = ({ isActive, activeIndex }) => (
           {item.label}
         </span>
 
+        {/* Faqat active bo'lgan item uchun pastki chiziqcha */}
         {isActive(item.path) && (
-          <>
-            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full"></div>
-            <div className="absolute -inset-2 bg-blue-500/5 dark:bg-blue-500/10 rounded-lg blur-xl"></div>
-          </>
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
         )}
 
+        {/* Hover effektlari */}
         <div className="absolute inset-0 bg-gradient-to-r from-blue-500/0 via-blue-500/5 to-purple-500/0 dark:from-blue-400/0 dark:via-blue-400/5 dark:to-purple-400/0 opacity-0 group-hover:opacity-100 rounded-lg transition-opacity duration-300"></div>
-
-        {/* Animated indicator */}
-        {index === activeIndex && (
-          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-8 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full animate-pulse"></div>
-        )}
       </Link>
     ))}
   </div>

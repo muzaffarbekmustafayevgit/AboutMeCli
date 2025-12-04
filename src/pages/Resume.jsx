@@ -172,7 +172,7 @@ function Resume() {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mb-8">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                <span className="block text-gray-800 dark:text-white">Muzaffar Akbarov</span>
+                <span className="block text-gray-800 dark:text-white">Muzaffar </span>
                 <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
                   Full-Stack Developer
                 </span>
