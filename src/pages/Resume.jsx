@@ -1,603 +1,329 @@
-// src/pages/Resume.jsx
-import React from "react";
-import Card from "../components/Card";
-import Button from "../components/Button";
 
-function Resume() {
-  const experience = [
-    {
-      role: "Full-Stack Developer",
-      company: "Freelance / Remote",
-      period: "2023 – Present",
-      description: "React va Node.js yordamida interaktiv web ilovalar yaratish, backend APIlar ishlab chiqish va ma'lumotlar bazasi bilan ishlash.",
-      achievements: [
-        "50+ loyiha muvaffaqiyatli yakunlandi",
-        "Mijozlar qoniqish darajasi 98%",
-        "Performans optimizatsiyasi bilan 40% tezlik oshirildi",
-        "RESTful API va GraphQL interfeyslari yaratildi"
-      ],
-      skills: ["React", "Node.js", "MongoDB", "Express", "TypeScript"],
-      icon: "🚀"
-    },
-    {
-      role: "Frontend Developer Intern",
-      company: "Tech Solutions Inc.",
-      period: "2022 – 2023",
-      description: "UI/UX dizaynni React.js yordamida amalga oshirish, kod standartlariga rioya qilish va jamoaviy ishlar.",
-      achievements: [
-        "Korporativ dashboard interfeysi yaratildi",
-        "Kod review va best practices",
-        "Agile metodologiyada ishlash tajribasi",
-        "Testing va debugging"
-      ],
-      skills: ["React", "JavaScript", "CSS", "Git", "Jira"],
-      icon: "💼"
-    },
-    {
-      role: "Web Developer",
-      company: "Digital Agency",
-      period: "2021 – 2022",
-      description: "Kichik va o'rta bizneslar uchun veb-saytlar va CRM tizimlarini ishlab chiqish.",
-      achievements: [
-        "20+ veb-sayt ishlab chiqildi",
-        "SEO optimallashtirish",
-        "Responsive design implementatsiyasi",
-        "WordPress va Shopify platformalari"
-      ],
-      skills: ["HTML/CSS", "JavaScript", "WordPress", "Shopify", "SEO"],
-      icon: "🌐"
-    }
-  ];
+import { 
+  Mail, 
+  Phone, 
+  MapPin, 
+  Briefcase, 
+  GraduationCap, 
+  Code, 
+  ExternalLink,
+  Download,
+  Globe,
+  Linkedin,
+  Github,
+  Award,
+  Calendar,
+  ChevronRight,
+  Link2,
+  Youtube
+} from "lucide-react";
+import ThemeToggle from "../components/ThemeToggle";
+import { socialMedias } from "../data/socialMedias";
+const Resume = () => {
 
-  const education = [
-    {
-      degree: "Bachelor of Software Engineering",
-      school: "Samarkand State University",
-      period: "2022 – Present",
-      grade: "4.8/5.0",
-      courses: [
-        "Data Structures & Algorithms",
-        "Database Systems",
-        "Web Development",
-        "Software Engineering",
-        "Computer Networks"
-      ],
-      icon: "🎓"
-    },
-    {
-      degree: "Advanced JavaScript Development",
-      school: "Udemy, Coursera, freeCodeCamp",
-      period: "2021 – 2022",
-      grade: "Top 5%",
-      courses: [
-        "Modern JavaScript ES6+",
-        "React & Redux",
-        "Node.js & Express",
-        "MongoDB & PostgreSQL",
-        "REST APIs & GraphQL"
-      ],
-      icon: "📚"
-    }
-  ];
 
-  const certificates = [
-    {
-      name: "Meta Front-End Developer Professional Certificate",
-      issuer: "Meta (Coursera)",
-      year: "2023",
-      skills: ["React", "Advanced JavaScript", "UI/UX", "Git"],
-      credential: "Verified Certificate",
-      icon: "🏆"
-    },
-    {
-      name: "Node.js Backend Development",
-      issuer: "Udemy",
-      year: "2022",
-      skills: ["Express.js", "MongoDB", "JWT", "REST API"],
-      credential: "Certificate of Completion",
-      icon: "⚙️"
-    },
-    {
-      name: "JavaScript Algorithms & Data Structures",
-      issuer: "freeCodeCamp",
-      year: "2021",
-      skills: ["Algorithms", "Data Structures", "Problem Solving"],
-      credential: "Certification",
-      icon: "🧠"
-    },
-    {
-      name: "Responsive Web Design",
-      issuer: "freeCodeCamp",
-      year: "2021",
-      skills: ["HTML5", "CSS3", "Flexbox", "Grid", "Responsive"],
-      credential: "Certification",
-      icon: "🎨"
-    }
-  ];
-
-  const skills = {
-    "Frontend": [
-      { name: "React.js", level: "Expert" },
-      { name: "TypeScript", level: "Advanced" },
-      { name: "Next.js", level: "Advanced" },
-      { name: "Vue.js", level: "Intermediate" },
-      { name: "Tailwind CSS", level: "Expert" }
-    ],
-    "Backend": [
-      { name: "Node.js", level: "Expert" },
-      { name: "Express.js", level: "Advanced" },
-      { name: "MongoDB", level: "Advanced" },
-      { name: "PostgreSQL", level: "Intermediate" },
-      { name: "GraphQL", level: "Intermediate" }
-    ],
-    "Tools & DevOps": [
-      { name: "Git & GitHub", level: "Expert" },
-      { name: "Docker", level: "Intermediate" },
-      { name: "AWS", level: "Beginner" },
-      { name: "CI/CD", level: "Intermediate" },
-      { name: "Jira", level: "Advanced" }
-    ],
-    "Soft Skills": [
-      { name: "Problem Solving", level: "Expert" },
-      { name: "Team Collaboration", level: "Advanced" },
-      { name: "Communication", level: "Advanced" },
-      { name: "Project Management", level: "Intermediate" },
-      { name: "Time Management", level: "Advanced" }
-    ]
-  };
-
-  const languages = [
-    { name: "Uzbek", level: "Native" },
-    { name: "English", level: "Professional" },
-    { name: "Russian", level: "Conversational" }
-  ];
-
-  const downloadCV = () => {
-    // Bu yerda haqiqiy CV faylini yuklab olish logikasi bo'ladi
-    alert("CV yuklab olinmoqda...");
-    // window.open('/files/Muzaffarbek_CV.pdf', '_blank');
-  };
-
-  const printCV = () => {
-    window.print();
+  const downloadResume = () => {
+    alert("Resume downloaded! In a real app, this would trigger a PDF download.");
   };
 
   return (
-    <div className="space-y-12 py-8">
-      {/* Hero Section */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-blue-600/10 via-purple-600/10 to-pink-600/10 dark:from-blue-500/5 dark:via-purple-500/5 dark:to-pink-500/5 p-8 md:p-12">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full -translate-y-32 translate-x-32"></div>
-        
-        <div className="relative z-10">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 mb-8">
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
-                <span className="block text-gray-800 dark:text-white">Muzaffar </span>
-                <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 dark:from-blue-400 dark:via-purple-400 dark:to-pink-400 bg-clip-text text-transparent">
-                  Full-Stack Developer
-                </span>
+    <div className="min-h-screen transition-colors duration-300 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+      {/* Theme Toggle */}
+ 
+<div className="w-full hidden flex justify-end pr-4">
+  <ThemeToggle />
+</div>
+      {/* Main Container */}
+      <div className="max-w-4xl mx-auto mt-12 px-4 py-8 sm:px-6 lg:px-8">
+        {/* Header Section */}
+        <div className="mb-12">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-8">
+            <div className="flex-1">
+              <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
+                Muzaffarbek Mustafayev
               </h1>
+              <div className="flex items-center gap-2 text-lg text-gray-600 dark:text-gray-400 mb-4">
+                <Briefcase size={20} />
+                <span>Fullstack Developer</span>
+                <span className="mx-2">•</span>
+                <Code size={20} />
+                <span>React & Node.js Expert</span>
+              </div>
               
-              <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl">
-                3+ yillik tajribaga ega Full-Stack Developer. React, Node.js va modern web texnologiyalari 
-                orqali innovatsion web ilovalarni yaratishga ixtisoslashganman.
+              {/* Contact Info */}
+              <div className="flex flex-wrap gap-4 mb-6">
+                <a href="mailto:muzaffarbekmustafayev@gmail.com" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                  <Mail size={18} />
+                  <span className="text-sm">muzaffarbekmustafayev@gmail.com</span>
+                </a>
+                <a href="tel:+998944755100" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+                  <Phone size={18} />
+                  <span className="text-sm">{socialMedias.phone.path}</span>
+                </a>
+                <div className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm">
+                  <MapPin size={18} />
+                  <span className="text-sm">Samarkand, Uzbekistan</span>
+                </div>
+              </div>
+            </div>
+            
+            {/* Download Button */}
+            <button
+              onClick={downloadResume}
+              className="flex items-center gap-2 px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-purple-500 text-white font-medium hover:from-blue-600 hover:to-purple-600 transition-all hover:shadow-lg"
+            >
+              <Download size={20} />
+              Download Resume
+            </button>
+          </div>
+          
+          {/* Social Links */}
+          <div className="flex gap-4">
+            <a href={socialMedias.linkedin.path} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+              <Linkedin size={18} />
+              <span className="text-sm">LinkedIn</span>
+            </a>
+            <a href={socialMedias.git_hub.path} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+              <Github size={18} />
+              <span className="text-sm">GitHub</span>
+            </a>
+            <a href={socialMedias.youtube.path} className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
+              <Youtube size={18} />
+              <span className="text-sm">You tube</span>
+            </a>
+          </div>
+        </div>
+
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* Professional Summary */}
+            <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-blue-100 dark:bg-blue-900/30">
+                  <Award size={24} className="text-blue-600 dark:text-blue-400" />
+                </div>
+                <h2 className="text-2xl font-bold">Professional Summary</h2>
+              </div>
+              <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                Experienced Software Engineer with 2+ years of expertise in React, Node.js, and fullstack development. 
+                Passionate about building efficient, scalable web applications with modern architectures. 
+                Strong problem-solving skills and a continuous learner who stays updated with the latest technologies.
               </p>
-            </div>
-            
-            <div className="flex-shrink-0">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-blue-600 via-purple-600 to-pink-600 p-1">
-                <div className="w-full h-full rounded-full bg-white dark:bg-gray-900 flex items-center justify-center">
-                  <div className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">
-                    MA
+            </section>
+
+            {/* Experience */}
+            <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-green-100 dark:bg-green-900/30">
+                  <Briefcase size={24} className="text-green-600 dark:text-green-400" />
+                </div>
+                <h2 className="text-2xl font-bold">Experience</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="relative pl-8">
+                  <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-blue-500"></div>
+                  <div className="absolute left-[7px] top-6 w-0.5 h-full bg-gradient-to-b from-blue-500 to-transparent"></div>
+                  
+                  <div className="mb-4">
+                    <h3 className="text-xl font-semibold mb-1">Software Engineer</h3>
+                    <div className="flex flex-wrap items-center gap-2 mb-2">
+                      <span className="text-blue-600 dark:text-blue-400 font-medium">Samarkand State University</span>
+                      <span className="flex items-center gap-1 text-sm text-gray-500 dark:text-gray-400">
+                        <Calendar size={14} />
+                        2023 – Present
+                      </span>
+                    </div>
+                    <ul className="space-y-2 text-gray-600 dark:text-gray-300">
+                      <li className="flex items-start gap-2">
+                        <ChevronRight size={16} className="text-blue-500 mt-1 flex-shrink-0" />
+                        <span>Developed scalable web applications using React, Node.js, and MongoDB</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <ChevronRight size={16} className="text-blue-500 mt-1 flex-shrink-0" />
+                        <span>Implemented JWT authentication and role-based access control systems</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <ChevronRight size={16} className="text-blue-500 mt-1 flex-shrink-0" />
+                        <span>Collaborated with cross-functional teams using Agile methodologies</span>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
-            </div>
+            </section>
+
+            {/* Projects */}
+            <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-purple-100 dark:bg-purple-900/30">
+                  <Code size={24} className="text-purple-600 dark:text-purple-400" />
+                </div>
+                <h2 className="text-2xl font-bold">Projects</h2>
+              </div>
+              
+              <div className="space-y-6">
+                <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 transition-colors">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-lg font-semibold">AI Chat Platform</h3>
+                    <a href="#" className="flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                      Live Demo <ExternalLink size={14} />
+                    </a>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-3">
+                    Fullstack chat application with real-time messaging, AI responses, and role-based authentication.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 rounded-full text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">React</span>
+                    <span className="px-3 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">Node.js</span>
+                    <span className="px-3 py-1 rounded-full text-xs bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300">MongoDB</span>
+                    <span className="px-3 py-1 rounded-full text-xs bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-300">Socket.io</span>
+                  </div>
+                </div>
+
+                <div className="p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-500 transition-colors">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-lg font-semibold">Face ID Login System</h3>
+                    <a href="#" className="flex items-center gap-1 text-sm text-blue-600 dark:text-blue-400 hover:underline">
+                      View Code <ExternalLink size={14} />
+                    </a>
+                  </div>
+                  <p className="text-gray-600 dark:text-gray-300 mb-3">
+                    Secure authentication system using facial recognition technology with Node.js backend.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 rounded-full text-xs bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300">Node.js</span>
+                    <span className="px-3 py-1 rounded-full text-xs bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300">Face-api.js</span>
+                    <span className="px-3 py-1 rounded-full text-xs bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300">Express</span>
+                    <span className="px-3 py-1 rounded-full text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">JWT</span>
+                  </div>
+                </div>
+              </div>
+            </section>
           </div>
-          
-          {/* Contact Info */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            {[
-              { icon: "📧", label: "Email", value: "muzaffar@example.com", color: "bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400" },
-              { icon: "📱", label: "Phone", value: "+998 90 123 45 67", color: "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400" },
-              { icon: "📍", label: "Location", value: "Samarkand, Uzbekistan", color: "bg-purple-100 dark:bg-purple-900/30 text-purple-600 dark:text-purple-400" },
-              { icon: "💼", label: "Status", value: "Available for work", color: "bg-pink-100 dark:bg-pink-900/30 text-pink-600 dark:text-pink-400" },
-            ].map((item, index) => (
-              <div key={index} className={`flex items-center gap-3 p-4 rounded-xl ${item.color}`}>
-                <div className="text-2xl">{item.icon}</div>
+
+          {/* Right Column */}
+          <div className="space-y-8">
+            {/* Skills */}
+            <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-orange-100 dark:bg-orange-900/30">
+                  <Code size={24} className="text-orange-600 dark:text-orange-400" />
+                </div>
+                <h2 className="text-2xl font-bold">Skills</h2>
+              </div>
+              
+              <div className="space-y-6">
                 <div>
-                  <div className="font-medium">{item.label}</div>
-                  <div className="text-sm">{item.value}</div>
+                  <h3 className="font-semibold mb-3 text-lg text-gray-700 dark:text-gray-300">Frontend</h3>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">React</span>
+                    <span className="px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">Redux</span>
+                    <span className="px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">React Router</span>
+                    <span className="px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">TailwindCSS</span>
+                    <span className="px-3 py-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300">TypeScript</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold mb-3 text-lg text-gray-700 dark:text-gray-300">Backend</h3>
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    <span className="px-3 py-2 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300">Node.js</span>
+                    <span className="px-3 py-2 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300">Express</span>
+                    <span className="px-3 py-2 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300">MongoDB</span>
+                    <span className="px-3 py-2 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300">MySQL</span>
+                    <span className="px-3 py-2 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300">REST API</span>
+                  </div>
+                </div>
+                
+                <div>
+                  <h3 className="font-semibold mb-3 text-lg text-gray-700 dark:text-gray-300">Tools & Others</h3>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-2 rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300">Git</span>
+                    <span className="px-3 py-2 rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300">JWT</span>
+                    <span className="px-3 py-2 rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300">Agile</span>
+                    <span className="px-3 py-2 rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-700 dark:text-purple-300">Docker</span>
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-          
-          {/* Action Buttons */}
-          <div className="flex flex-wrap gap-4">
-            <Button 
-              variant="primary" 
-              size="lg"
-              icon="📥"
-              onClick={downloadCV}
-            >
-              CV Yuklab Olish
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              icon="🖨️"
-              onClick={printCV}
-            >
-              Chop etish
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="lg"
-              icon="👁️"
-              as="a"
-              href="/portfolio"
-            >
-              Portfolio Ko'rish
-            </Button>
-          </div>
-        </div>
-      </div>
+            </section>
 
-      {/* Main Content - Two Column Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Left Column - Experience & Education */}
-        <div className="lg:col-span-2 space-y-8">
-          {/* Work Experience */}
-          <Card className="relative overflow-hidden" hoverable gradient>
-            <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full -translate-y-16 translate-x-16"></div>
-            
-            <Card.Header>
-              <h2 className="text-2xl font-bold flex items-center gap-3">
-                <span className="text-blue-600 dark:text-blue-400">💼</span>
-                Ish Tajribasi
-                <span className="text-sm font-normal text-gray-500 dark:text-gray-400">
-                  (3+ Years)
-                </span>
-              </h2>
-            </Card.Header>
-            
-            <Card.Body>
-              <div className="space-y-8">
-                {experience.map((job, index) => (
-                  <div key={index} className="relative pb-8 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-xl">
-                        {job.icon}
-                      </div>
-                      
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center justify-between mb-3">
-                          <div>
-                            <h3 className="text-xl font-bold text-gray-800 dark:text-white">
-                              {job.role}
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-400 font-medium">
-                              {job.company}
-                            </p>
-                          </div>
-                          <span className="text-sm font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/30 px-3 py-1 rounded-full">
-                            {job.period}
-                          </span>
-                        </div>
-                        
-                        <p className="text-gray-600 dark:text-gray-300 mb-4">
-                          {job.description}
-                        </p>
-                        
-                        {/* Achievements */}
-                        <div className="mb-4">
-                          <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
-                            <span className="text-green-500">✓</span>
-                            Yutuqlar
-                          </h4>
-                          <ul className="space-y-2">
-                            {job.achievements.map((achievement, idx) => (
-                              <li key={idx} className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400">
-                                <div className="w-1.5 h-1.5 bg-green-500 rounded-full"></div>
-                                {achievement}
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                        
-                        {/* Skills */}
-                        <div>
-                          <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2">
-                            <span className="text-blue-500">⚡</span>
-                            Qo'llangan Texnologiyalar
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {job.skills.map((skill, idx) => (
-                              <span 
-                                key={idx}
-                                className="px-3 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-full text-sm"
-                              >
-                                {skill}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+            {/* Education */}
+            <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="p-2 rounded-lg bg-indigo-100 dark:bg-indigo-900/30">
+                  <GraduationCap size={24} className="text-indigo-600 dark:text-indigo-400" />
+                </div>
+                <h2 className="text-2xl font-bold">Education</h2>
               </div>
-            </Card.Body>
-          </Card>
-
-          {/* Education */}
-          <Card padding="lg" hoverable>
-            <Card.Header>
-              <h2 className="text-2xl font-bold flex items-center gap-3">
-                <span className="text-purple-600 dark:text-purple-400">🎓</span>
-                Ta'lim
-              </h2>
-            </Card.Header>
-            
-            <Card.Body>
-              <div className="space-y-8">
-                {education.map((edu, index) => (
-                  <div key={index} className="relative pb-8 border-b border-gray-200 dark:border-gray-700 last:border-0 last:pb-0">
-                    <div className="flex items-start gap-4">
-                      <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center text-white text-xl">
-                        {edu.icon}
-                      </div>
-                      
-                      <div className="flex-1">
-                        <div className="flex flex-wrap items-center justify-between mb-3">
-                          <div>
-                            <h3 className="text-xl font-bold text-gray-800 dark:text-white">
-                              {edu.degree}
-                            </h3>
-                            <p className="text-gray-600 dark:text-gray-400 font-medium">
-                              {edu.school}
-                            </p>
-                          </div>
-                          <div className="flex flex-col items-end gap-2">
-                            <span className="text-sm text-gray-500 dark:text-gray-400">
-                              {edu.period}
-                            </span>
-                            <span className="px-3 py-1 bg-gradient-to-r from-blue-500 to-purple-500 text-white text-sm font-bold rounded-full">
-                              {edu.grade}
-                            </span>
-                          </div>
-                        </div>
-                        
-                        {/* Courses */}
-                        <div>
-                          <h4 className="font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                            Asosiy Kurslar
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {edu.courses.map((course, idx) => (
-                              <span 
-                                key={idx}
-                                className="px-3 py-1 bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 rounded-full text-sm"
-                              >
-                                {course}
-                              </span>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card.Body>
-          </Card>
-        </div>
-
-        {/* Right Column - Skills & Certificates */}
-        <div className="space-y-8">
-          {/* Skills */}
-          <Card padding="lg" hoverable>
-            <Card.Header>
-              <h2 className="text-2xl font-bold flex items-center gap-3">
-                <span className="text-green-600 dark:text-green-400">⚡</span>
-                Ko'nikmalar
-              </h2>
-            </Card.Header>
-            
-            <Card.Body>
+              
               <div className="space-y-6">
-                {Object.entries(skills).map(([category, skillList]) => (
-                  <div key={category} className="space-y-3">
-                    <h3 className="font-semibold text-gray-800 dark:text-white flex items-center gap-2">
-                      <span className={`
-                        ${category === 'Frontend' ? 'text-blue-500' : ''}
-                        ${category === 'Backend' ? 'text-green-500' : ''}
-                        ${category === 'Tools & DevOps' ? 'text-purple-500' : ''}
-                        ${category === 'Soft Skills' ? 'text-pink-500' : ''}
-                      `}>
-                        {category === 'Frontend' && '🎨'}
-                        {category === 'Backend' && '⚙️'}
-                        {category === 'Tools & DevOps' && '🔧'}
-                        {category === 'Soft Skills' && '🤝'}
-                      </span>
-                      {category}
-                    </h3>
-                    
-                    <div className="space-y-2">
-                      {skillList.map((skill, idx) => (
-                        <div key={idx} className="flex items-center justify-between">
-                          <span className="text-gray-700 dark:text-gray-300">
-                            {skill.name}
-                          </span>
-                          <span className={`
-                            text-sm font-medium px-2 py-1 rounded-full
-                            ${skill.level === 'Expert' ? 'bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400' : ''}
-                            ${skill.level === 'Advanced' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : ''}
-                            ${skill.level === 'Intermediate' ? 'bg-yellow-100 dark:bg-yellow-900/30 text-yellow-600 dark:text-yellow-400' : ''}
-                            ${skill.level === 'Beginner' ? 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400' : ''}
-                          `}>
-                            {skill.level}
-                          </span>
-                        </div>
-                      ))}
+                <div className="relative pl-8">
+                  <div className="absolute left-0 top-2 w-4 h-4 rounded-full bg-indigo-500"></div>
+                  
+                  <div className="mb-2">
+                    <h3 className="text-lg font-semibold mb-1">Bachelor in Software Engineering</h3>
+                    <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
+                      <span className="font-medium">Samarkand State University</span>
+                      <span>•</span>
+                      <span>2022 – Present</span>
                     </div>
                   </div>
-                ))}
+                  <p className="text-gray-600 dark:text-gray-300 text-sm">
+                    Currently pursuing degree with focus on modern web technologies, algorithms, and software architecture.
+                  </p>
+                </div>
               </div>
-            </Card.Body>
-          </Card>
+            </section>
 
-          {/* Certificates */}
-          <Card padding="lg" hoverable>
-            <Card.Header>
-              <h2 className="text-2xl font-bold flex items-center gap-3">
-                <span className="text-yellow-600 dark:text-yellow-400">🏆</span>
-                Sertifikatlar
-              </h2>
-            </Card.Header>
-            
-            <Card.Body>
-              <div className="space-y-6">
-                {certificates.map((cert, index) => (
-                  <div key={index} className="p-4 bg-gray-50 dark:bg-gray-800/50 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
-                    <div className="flex items-start gap-3 mb-3">
-                      <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-yellow-500 to-orange-500 flex items-center justify-center">
-                        <span className="text-white text-lg">{cert.icon}</span>
-                      </div>
-                      
-                      <div>
-                        <h4 className="font-bold text-gray-800 dark:text-white">
-                          {cert.name}
-                        </h4>
-                        <p className="text-sm text-gray-600 dark:text-gray-400">
-                          {cert.issuer} • {cert.year}
-                        </p>
-                      </div>
-                    </div>
-                    
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-xs px-2 py-1 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400 rounded-full">
-                        {cert.credential}
-                      </span>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {cert.skills.map((skill, idx) => (
-                        <span 
-                          key={idx}
-                          className="px-2 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 text-xs rounded-full"
-                        >
-                          {skill}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </Card.Body>
-          </Card>
-
-          {/* Languages */}
-          <Card padding="lg" hoverable>
-            <Card.Header>
-              <h2 className="text-2xl font-bold flex items-center gap-3">
-                <span className="text-blue-600 dark:text-blue-400">🗣️</span>
-                Tillar
-              </h2>
-            </Card.Header>
-            
-            <Card.Body>
+            {/* Languages */}
+            <section className="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow">
+              <h2 className="text-2xl font-bold mb-6">Languages</h2>
               <div className="space-y-4">
-                {languages.map((lang, index) => (
-                  <div key={index} className="space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="font-medium text-gray-700 dark:text-gray-300">
-                        {lang.name}
-                      </span>
-                      <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">
-                        {lang.level}
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
-                      <div 
-                        className={`
-                          h-2 rounded-full
-                          ${lang.level === 'Native' ? 'bg-gradient-to-r from-green-400 to-green-600 w-full' : ''}
-                          ${lang.level === 'Professional' ? 'bg-gradient-to-r from-blue-400 to-blue-600 w-4/5' : ''}
-                          ${lang.level === 'Conversational' ? 'bg-gradient-to-r from-yellow-400 to-yellow-600 w-3/5' : ''}
-                        `}
-                      ></div>
-                    </div>
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="font-medium">Uzbek</span>
+                    <span className="text-gray-500 dark:text-gray-400">Native</span>
                   </div>
-                ))}
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="bg-blue-600 h-2 rounded-full w-full"></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="font-medium">English</span>
+                    <span className="text-gray-500 dark:text-gray-400">Fluent</span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="bg-green-600 h-2 rounded-full w-4/5"></div>
+                  </div>
+                </div>
+                <div>
+                  <div className="flex justify-between mb-1">
+                    <span className="font-medium">Russian</span>
+                    <span className="text-gray-500 dark:text-gray-400">Professional</span>
+                  </div>
+                  <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                    <div className="bg-purple-600 h-2 rounded-full w-3/4"></div>
+                  </div>
+                </div>
               </div>
-            </Card.Body>
-          </Card>
-        </div>
-      </div>
+            </section>
 
-      {/* CTA Section */}
-      <Card className="bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 dark:from-blue-500/5 dark:via-purple-500/5 dark:to-pink-500/5 border-2 border-blue-200 dark:border-blue-800">
-        <div className="text-center max-w-2xl mx-auto py-12">
-          <h2 className="text-3xl font-bold mb-6">
-            Hamkorlik qilishga tayyormisiz?
-          </h2>
-          <p className="text-gray-600 dark:text-gray-300 mb-8">
-            Men sizning loyihangizni amalga oshirishda yordam berishdan mamnunman.
-            Bog'laning va birgalikda ajoyib natijalarga erishamiz!
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button 
-              variant="primary" 
-              size="lg"
-              icon="💬"
-              as="a"
-              href="/contact"
-            >
-              Bog'lanish
-            </Button>
-            <Button 
-              variant="outline" 
-              size="lg"
-              icon="💼"
-              as="a"
-              href="/portfolio"
-            >
-              Portfolio
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="lg"
-              icon="📧"
-              as="a"
-              href="mailto:muzaffar@example.com"
-            >
-              Email Yuborish
-            </Button>
+          
           </div>
         </div>
-      </Card>
 
-      {/* Print Styles (hidden on screen) */}
-      <style jsx>{`
-        @media print {
-          .no-print {
-            display: none !important;
-          }
-          
-          body {
-            background: white !important;
-            color: black !important;
-          }
-          
-          .print-only {
-            display: block !important;
-          }
-        }
-      `}</style>
+        {/* Footer */}
+        <footer className="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800 text-center text-gray-500 dark:text-gray-400 text-sm">
+          <p>© {new Date().getFullYear()} Muzaffarbek Mustafayev. All rights reserved.</p>
+          <p className="mt-1">Last updated: December 2025</p>
+        </footer>
+      </div>
     </div>
   );
-}
+};
 
 export default Resume;

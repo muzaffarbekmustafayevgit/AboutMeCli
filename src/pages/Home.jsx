@@ -12,6 +12,7 @@ import MyImage from "../assets/USER.jpg";
 import TelegramIcon from "../components/Icons/TelegramIcon";
 import { socialMedias } from "../data/socialMedias";
 import CVdownload from "../components/CVdownload";
+import ThemeToggle from "../components/ThemeToggle";
 /*************  ✨ Windsurf Command ⭐  *************/
 /**
  * Home page component
@@ -41,6 +42,9 @@ function Home() {
  
 
       {/* Card 1: Content */}
+<div className="w-full hidden flex justify-end pr-4">
+  <ThemeToggle />
+</div>
 
       <div
         className="rounded-2xl p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 w-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl

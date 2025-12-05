@@ -11,5 +11,16 @@ export const socialMedias = {
     path: "https://www.youtube.com/@muzaffarbekmustafayev",
     label: "YouTube",
   },
-  telegram: { path: "https://t.me/MuzaffarbeksPortfolio", label: "Telegram" },
+  telegram: {
+    path: "https://t.me/MuzaffarbeksPortfolio",
+    label: "Telegram",
+  },
+  email: {
+    path: "muzaffarbekmustafayev@gmail.com",
+    label: "Email",
+  },
+  phone: {
+    path: "+998 94 475 51 00",
+    label: "Phone",
+  },
 };
