@@ -51,7 +51,7 @@ const Resume = () => {
               </div>
               
               {/* Contact Info */}
-              <div className="flex flex-wrap gap-4 mb-6">
+              <div className="flex flex-wrap gap-4">
                 <a href="mailto:muzaffarbekmustafayev@gmail.com" className="flex items-center gap-2 px-4 py-2 rounded-lg bg-white dark:bg-gray-800 shadow-sm hover:shadow-md transition-shadow">
                   <Mail size={18} />
                   <span className="text-sm">muzaffarbekmustafayev@gmail.com</span>
